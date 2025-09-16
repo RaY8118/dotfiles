@@ -1,0 +1,89 @@
+[
+  // ─── FILE TREE (Explorer) ─────────────────────────────────────────────
+  {
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+e"
+  },
+  {
+    "command": "workbench.files.action.focusFilesExplorer",
+    "key": "ctrl+e",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "renameFile",
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "deleteFile",
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+
+  // ─── BUFFER NAVIGATION (like <C-j>/<C-k>) ─────────────────────────────
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.nextEditor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.previousEditor",
+    "when": "editorTextFocus"
+  },
+
+  // ─── REFACTORING / CODE ACTIONS ────────────────────────────────────────
+  {
+    "key": "ctrl+alt+r",
+    "command": "editor.action.rename"
+  },
+  {
+    "key": "ctrl+alt+a",
+    "command": "editor.action.quickFix"
+  },
+
+  // ─── TERMINAL MANAGEMENT (ctrl+t based) ───────────────────────────────
+  {
+    "key": "ctrl+t n",
+    "command": "workbench.action.terminal.new"
+  },
+  {
+    "key": "ctrl+t s",
+    "command": "workbench.action.terminal.split"
+  },
+  {
+    "key": "ctrl+t x",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
+    "key": "ctrl+t t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+
+  // ─── TERMINAL NAVIGATION (jump between splits) ───────────────────────
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  }
+]

@@ -1,0 +1,31 @@
+[character]
+success_symbol = "❯"
+error_symbol = "✗"
+vicmd_symbol = "❮"
+
+[directory]
+style = "bold cyan"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+[git_status]
+style = "yellow"
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[python]
+symbol = "🐍 "
+style = "bold green"
+format = 'via [$symbol$version]($style) '
+
+[cmd_duration]
+min_time = 500
+format = "took [$duration]($style) "
+
+[battery]
+disabled = true
+full_symbol = "🔋"
+charging_symbol = "⚡"
+discharging_symbol = "💀"
+
