@@ -143,16 +143,28 @@ export EDITOR='nvim'
 alias zshconfig="nvim ~/.zshrc"
 alias nv="nvim"
 alias vim="nvim"
-alias ls="colorls"
+alias ls="eza"
+alias cat="bat"
 alias nvconf="cd ~/.config/nvim && nv"
 alias tmuxconf="cd ~ && tmux new -s tmux && nv .tmux.conf"
-#
-# fzf search function
+eval "$(zoxide init zsh)"
+
+# Your search function
 search() {
   local file
-  file=$(fd . --hidden --no-ignore | fzf --preview 'bat --style=numbers --color=always {} | head -100')
+  file=$(fd --type f --hidden --no-ignore | fzf --preview 'bat --style=numbers --color=always {} | head -100')
   [ -n "$file" ] && nvim "$file"
 }
 
-export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
+# Ctrl+T to run search
+autoload -Uz add-zsh-hook
+
+search-wrapper() {
+  zle -I            # Clear any pending input
+  search
+  zle reset-prompt  # Refresh prompt after running
+}
+
+zle -N search-wrapper
+bindkey '^T' search-wrapper
 export LC_ALL=en_US.UTF-8
