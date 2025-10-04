@@ -1,0 +1,19 @@
+- name: Ensure git and base-devel are installed
+  pacman:
+    name:
+      - git
+      - base-devel
+    state: present
+
+- name: Clone yay from AUR
+  become: false
+  git:
+    repo: "https://aur.archlinux.org/yay.git"
+    dest: "/home/parth/yay"
+    version: master
+
+- name: Build and install yay
+  become: false
+  command: makepkg -si --noconfirm
+  args:
+    chdir: "/home/parth/yay"
