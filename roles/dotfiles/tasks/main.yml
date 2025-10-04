@@ -1,0 +1,47 @@
+- name: Clone dotfiles repo
+  become: false
+  git: 
+    repo: "https://github.com/RaY8118/dotfiles.git"
+    dest: "/home/parth/.dotfiles"
+    version: master 
+    update: yes
+
+- name: Symlink .zshrc
+  file:
+    src: "/home/parth/.dotfiles/zsh/.zshrc"
+    dest: "/home/parth/.zshrc"
+    state: link
+    force: yes
+    follow: no
+
+- name: Clone nvim repo
+  become: false
+  git: 
+    repo: "https://github.com/RaY8118/personal-nvim.git"
+    dest: "/home/parth/.dotfiles/nvim"
+    version: main
+    update: yes
+
+- name: Symlink nvim config
+  file:
+    src: "/home/parth/.dotfiles/nvim"
+    dest: "/home/parth/.config/nvim"
+    state: link
+    force: yes
+
+- name: Set zsh as default shell
+  become: true
+  user:
+    name: parth
+    shell: /bin/zsh
+
+
+- name: Install Oh My Zsh
+  become: false
+  shell: |
+    if [ ! -d "{{ ansible_env.HOME }}/.oh-my-zsh" ]; then
+      RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    fi
+  args:
+    executable: /bin/bash
+

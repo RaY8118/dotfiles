@@ -1,0 +1,46 @@
+- name: Install base utilities
+  pacman:
+    name:
+      - base-devel
+      - git
+      - neovim
+      - curl
+      - wget
+      - unzip
+      - tar
+      - man-db
+      - which
+      - tree
+      - htop
+      - zsh
+      - sudo
+    state: present
+
+- name: Install networking tools
+  pacman:
+    name:
+      - net-tools
+      - inetutils
+      - openssh
+      - bind
+      - rsync
+      - tmux
+    state: present
+
+- name: Install language-neutral tools
+  pacman:
+    name:
+      - python
+      - python-pip
+      - nodejs
+      - npm
+    state: present
+
+- name: Install quality of life tools
+  pacman:
+    name:
+      - fzf
+      - ripgrep
+      - bat
+      - exa
+    state: present
