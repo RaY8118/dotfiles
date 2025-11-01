@@ -42,6 +42,7 @@ alias nv="nvim"
 alias vim="nvim"
 alias ls="eza"
 alias cat="bat"
+alias cd="z"
 alias nvconf="cd ~/.config/nvim && nv"
 alias tmuxconf="cd ~ && tmux new -s tmux && nv .tmux.conf"
 
