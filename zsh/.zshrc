@@ -40,7 +40,7 @@ export PATH=$PATH:/home/parth/.local/share/nvim/mason/bin
 alias zshconfig="nvim ~/.zshrc"
 alias nv="nvim"
 alias vim="nvim"
-alias ls="eza"
+alias ls="eza -l --icons"
 alias cat="bat"
 alias cd="z"
 alias nvconf="cd ~/.config/nvim && nv"
@@ -77,3 +77,23 @@ search-wrapper() {
 }
 zle -N search-wrapper
 bindkey '^T' search-wrapper
+
+
+function autosuggest-accept-or-complete() {
+  # If there is a visible autosuggestion, accept it
+  if [[ -n "$ZSH_AUTOSUGGEST_BUFFER" ]]; then
+    zle autosuggest-accept
+  else
+    # Otherwise, fall back to normal completion
+    zle expand-or-complete
+  fi
+}
+
+zle -N autosuggest-accept-or-complete
+bindkey '^I' autosuggest-accept-or-complete
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/parth/downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/parth/downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/parth/downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/parth/downloads/google-cloud-sdk/completion.zsh.inc'; fi
